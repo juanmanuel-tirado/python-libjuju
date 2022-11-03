@@ -1807,20 +1807,20 @@ class Model:
 
                 # If we're using a newer client, then the CharmOrigin needs a
                 # base
-                if not self.connection().is_using_old_client:
-                    charm_origin.base = utils.get_local_charm_base(charm_series,
-                                                                   channel,
-                                                                   metadata,
-                                                                   charm_dir,
-                                                                   client.Base)
+                #if not self.connection().is_using_old_client:
+                charm_origin.base = utils.get_local_charm_base(charm_series,
+                                                                channel,
+                                                                metadata,
+                                                                charm_dir,
+                                                                client.Base)
 
                 if not application_name:
                     application_name = metadata['name']
-                if self.connection().is_using_old_client and not charm_series:
-                    raise JujuError(
-                        "Couldn't determine series for charm at {}. "
-                        "Pass a 'series' kwarg to Model.deploy().".format(
-                            charm_dir))
+                # if self.connection().is_using_old_client and not charm_series:
+                #     raise JujuError(
+                #         "Couldn't determine series for charm at {}. "
+                #         "Pass a 'series' kwarg to Model.deploy().".format(
+                #             charm_dir))
                 identifier = await self.add_local_charm_dir(charm_dir,
                                                             charm_series)
                 resources = await self.add_local_resources(application_name,
